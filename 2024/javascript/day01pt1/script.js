@@ -6,7 +6,7 @@ function parseInput(path) {
     const result = fileContents.split('\n').map(line => line.trim());
     return result;
 }
-
+ 
 function main() {
     const inputPath = 'input.txt';
     const locations = parseInput(inputPath);
