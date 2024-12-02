@@ -22,6 +22,17 @@ function validate(levels){
     return (isIncreasing || isDecreasing) && fitsAdjDiff
 }
 
+function dampen(levels){
+    for(let i = 0; i < levels.length; i++){
+        const temp = [...levels]
+        temp.splice(i, 1)
+        if(validate(temp)){
+            return true
+        }
+    }
+    return false
+}
+
 function part1() {
     const inputPath = 'input.txt';
     const reports = parseInput(inputPath);
@@ -36,4 +47,20 @@ function part1() {
     console.log(safeReports)
 }
 
+function part2(){
+    const inputPath = 'input.txt';
+    const reports = parseInput(inputPath);
+    let safeReports = 0
+    for(const levels of reports){
+        if(validate(levels)){
+            safeReports++
+        } else if (dampen(levels)){
+            safeReports++
+        }
+    }
+    console.log(safeReports)
+    return safeReports
+}
+
 part1()
+part2()
